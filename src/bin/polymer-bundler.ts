@@ -43,6 +43,12 @@ const optionDefinitions = [
         'URL to exclude from inlining. Use multiple times to exclude multiple files and folders. HTML tags referencing excluded URLs are preserved.'
   },
   {
+    name: 'skip-unresolved-imports',
+    type: Boolean,
+    description:
+    'Prevent inlining unresolved imports'
+  },
+  {
     name: 'strip-comments',
     type: Boolean,
     description:
@@ -196,6 +202,7 @@ options.stripComments = options['strip-comments'];
 options.implicitStrip = !options['no-implicit-strip'];
 options.inlineScripts = Boolean(options['inline-scripts']);
 options.inlineCss = Boolean(options['inline-css']);
+options.skipUnresolvedImports = Boolean(options['skip-unresolved-imports']);
 options.rewriteUrlsInTemplates = Boolean(options['rewrite-urls-in-templates']);
 
 if (options.redirect) {

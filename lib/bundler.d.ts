@@ -11,6 +11,7 @@ export interface Options {
     rewriteUrlsInTemplates?: boolean;
     sourcemaps?: boolean;
     stripComments?: boolean;
+    skipUnresolvedImports?: boolean;
     strategy?: BundleStrategy;
     urlMapper?: BundleUrlMapper;
 }
@@ -24,6 +25,7 @@ export declare class Bundler {
     enableScriptInlining: boolean;
     excludes: UrlString[];
     rewriteUrlsInTemplates: boolean;
+    skipUnresolvedImports: boolean;
     sourcemaps: boolean;
     stripComments: boolean;
     strategy: BundleStrategy;
