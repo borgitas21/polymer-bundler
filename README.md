@@ -31,6 +31,7 @@ for this step).
 - `-v`|`--version`: Print version number
 - `-r`|`--root`: The root of the package/project being bundled.  Defaults to the current working folder.
 - `--exclude <path>`: Exclude a subpath from root. Use multiple times to exclude multiple paths. Tags (imports/scripts/etc) that reference an excluded path are left in-place, meaning the resources are not inlined. ex: `--exclude=elements/x-foo.html --exclude=elements/x-bar.html`
+- `--skip-unresolved-imports`: Prevent inlining unresolved imports.
 - `--inline-scripts`: External scripts will only be inlined if this flag is provided.
 - `--inline-css`: External stylesheets will only be inlined if this flag is provided.
 - `--manifest-out <path>`: If specified, the bundle manifest will be written out to `<path>`.
