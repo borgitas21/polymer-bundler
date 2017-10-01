@@ -1,4 +1,3 @@
-/// <reference types="source-map" />
 import * as parse5 from 'parse5';
 import { Analyzer, Document } from 'polymer-analyzer';
 import { AnalysisContext } from 'polymer-analyzer/lib/core/analysis-context';

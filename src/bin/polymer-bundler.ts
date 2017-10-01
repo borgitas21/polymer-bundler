@@ -43,6 +43,12 @@ const optionDefinitions = [
         'URL to exclude from inlining. Use multiple times to exclude multiple files and folders. HTML tags referencing excluded URLs are preserved.'
   },
   {
+    name: 'skip-unresolved-imports',
+    type: Boolean,
+    description:
+    'Prevent inlining unresolved imports'
+  },
+  {
     name: 'strip-comments',
     type: Boolean,
     description:

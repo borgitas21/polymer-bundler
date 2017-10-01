@@ -44,6 +44,7 @@ export async function inlineHtmlImport(
     docBundle: AssignedBundle,
     manifest: BundleManifest,
     enableSourcemaps: boolean,
+    skipUnresolvedImports: boolean,
     rewriteUrlsInTemplates?: boolean,
     excludes?: string[]) {
   const isLazy = dom5.getAttribute(linkTag, 'rel')!.match(/lazy-import/i);
@@ -84,7 +85,7 @@ export async function inlineHtmlImport(
   }
 
   // Don't inline an import into itself.
-  if (document.url === resolvedImportUrl) {
+  if (skipUnresolvedImports || document.url === resolvedImportUrl) {
     astUtils.removeElementAndNewline(linkTag);
     return;
   }
@@ -176,6 +177,7 @@ export async function inlineHtmlImport(
         docBundle,
         manifest,
         enableSourcemaps,
+        skipUnresolvedImports,
         rewriteUrlsInTemplates,
         excludes);
   }
