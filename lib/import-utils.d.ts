@@ -7,7 +7,7 @@ import { UrlString } from './url-utils';
  * at the location of the link tag and then remove the link tag.  If the link
  * is a `lazy-import` link, content will not be inlined.
  */
-export declare function inlineHtmlImport(analyzer: Analyzer, document: Document, linkTag: ASTNode, stripImports: Set<UrlString>, docBundle: AssignedBundle, manifest: BundleManifest, enableSourcemaps: boolean, rewriteUrlsInTemplates?: boolean, excludes?: string[]): Promise<void>;
+export declare function inlineHtmlImport(analyzer: Analyzer, document: Document, linkTag: ASTNode, stripImports: Set<UrlString>, docBundle: AssignedBundle, manifest: BundleManifest, enableSourcemaps: boolean, skipUnresolvedImports: boolean, rewriteUrlsInTemplates?: boolean, excludes?: string[]): Promise<void>;
 /**
  * Inlines the contents of the document returned by the script tag's src url
  * into the script tag content and removes the src attribute.

@@ -59,6 +59,9 @@ export interface Options {
   // Remove of all comments (except those containing '@license') when true.
   stripComments?: boolean;
 
+  // Prevent inline unresolved imports
+  skipUnresolvedImports?: boolean;
+
   // Bundle strategy used to construct the output bundles.
   strategy?: BundleStrategy;
 
@@ -79,6 +82,7 @@ export class Bundler {
   rewriteUrlsInTemplates: boolean;
   sourcemaps: boolean;
   stripComments: boolean;
+  skipUnresolvedImports: boolean;
   strategy: BundleStrategy;
   urlMapper: BundleUrlMapper;
 
@@ -107,6 +111,7 @@ export class Bundler {
     this.enableScriptInlining =
         opts.inlineScripts === undefined ? true : opts.inlineScripts;
     this.rewriteUrlsInTemplates = Boolean(opts.rewriteUrlsInTemplates);
+    this.skipUnresolvedImports = opts.skipUnresolvedImports === true;
     this.sourcemaps = Boolean(opts.sourcemaps);
     this.strategy =
         opts.strategy || bundleManifestLib.generateSharedDepsMergeStrategy();
@@ -402,6 +407,7 @@ export class Bundler {
           bundle,
           bundleManifest,
           this.sourcemaps,
+          this.skipUnresolvedImports,
           this.rewriteUrlsInTemplates,
           this.excludes);
     }

@@ -44,6 +44,7 @@ export async function inlineHtmlImport(
     docBundle: AssignedBundle,
     manifest: BundleManifest,
     enableSourcemaps: boolean,
+    skipUnresolvedImports: boolean,
     rewriteUrlsInTemplates?: boolean,
     excludes?: string[]) {
   const isLazy = dom5.getAttribute(linkTag, 'rel')!.match(/lazy-import/i);
@@ -73,6 +74,12 @@ export async function inlineHtmlImport(
   // import link alone.  Unless the file was specifically excluded, we need to
   // record it as a "missing import".
   if (!importBundle) {
+    // Don't inline unresolved imports
+    if (skipUnresolvedImports) {
+      astUtils.removeElementAndNewline(linkTag);
+      return;
+    }
+
     if (!excludes ||
         !excludes.some(
             (u) => u === resolvedImportUrl ||
@@ -176,6 +183,7 @@ export async function inlineHtmlImport(
         docBundle,
         manifest,
         enableSourcemaps,
+        skipUnresolvedImports,
         rewriteUrlsInTemplates,
         excludes);
   }
